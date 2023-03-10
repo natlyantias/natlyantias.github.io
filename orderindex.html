@@ -6,19 +6,33 @@
   <body>
     <h1>Place an Order</h1>
 
-    <label for="itemLabel"> Enter item you'd like</label><br>
-    <input type="text" id="myItem"><br>
-    <label for="numLabel"> How many would you like?</label><br>
-    <input type="int" id="numItem"><br>
-    <label for="nameLabel"> Name:</label><br>
-    <input type="text" id="custName"><br>
-    <label for="addressLabel"> Address:</label><br>
-    <input type="text" id="custAddress"><br>
-    <label for="phoneLabel"> Phone Number:</label><br>
-    <input type="int" id="custPhone"><br>
-    <button type="button" id="orderButton">submit</button>
-    <label for="testing"></label>
-    
+    <form>
+
+    <section class="orderInformation">
+      <label for="itemOrder">What item would you like?</label>
+      <br>
+      <input type="text", id="myItem">
+      <label for="numOrder">How many would you like?</label>
+      <br>
+      <input type="number", id="numItem">
+    </section>
+
+    <section class="custInformation">
+      <label for="userName">Name:</label>
+      <br>
+      <input type="text", id="custName">
+      <label for="userAddress">Address:</label>
+      <br>
+      <input type="text", id="custAddress">
+      <label for="userPhone">Phone Number:</label>
+      <br>
+      <input type="number", id="custPhone">
+    </section>
+
+    <section class="Submission">
+      <input type="submit" value="Submit">
+    </section>
+    </form>
     
 
     <script src="order.js"></script>
