@@ -1,3 +1,5 @@
-function redirectToHomepage() {
-  window.location.href = "https://natlyantias.github.io/menuindex.html";
+function redirectToMenu() {
+  window.location.href = "menuindex.html";
 }
+
+document.getElementById("menu-button").addEventListener("click", redirectToMenu);
