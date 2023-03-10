@@ -10,4 +10,7 @@ let custAddress;
 let numItem;
 let myItem;
 
-document.getElementById("orderButton").onclick = function(){}
+document.getElementById("orderButton").onclick = function(){
+  myItem = document.getElementById("itemOrder").value;
+  console.log(myItem);
+}
