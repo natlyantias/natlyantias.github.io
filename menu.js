@@ -1,3 +1,3 @@
 function redirectToHomepage() {
-  window.location.href = "ourmenu.html";
+  window.location.href = "https://natlyantias.github.io/menuindex.html";
 }
