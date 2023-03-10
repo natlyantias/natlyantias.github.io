@@ -35,9 +35,18 @@ nav li {
   color: #8B4513;
   display: inline-block;
   font-size: 20px;
-  padding: 10px 20px;
+  padding: 5px 10px;
   transition: 0.5s;
 }
+#menu-button:hover {
+  background-color: #CD853F;
+  border: 5px solid #A0522D;
+  border-radius: 12px;
+  color: #8B4513;
+  transition: 0.5s;
+}
+
+
 
 #order-button {
   background-color: #CD853F;
@@ -46,7 +55,14 @@ nav li {
   color: #8B4513;
   display: inline-block;
   font-size: 20px;
-  padding: 10px 20px;
+  padding: 5px 10px;
+  transition: 0.5s;
+}
+#order-button:hover {
+  background-color: #CD853F;
+  border: 5px solid #A0522D;
+  border-radius: 12px;
+  color: #8B4513;
   transition: 0.5s;
 }
 
@@ -58,7 +74,14 @@ nav li {
   color: #8B4513;
   display: inline-block;
   font-size: 20px;
-  padding: 10px 20px;
+  padding: 5px 10px;
+  transition: 0.5s;
+}
+#review-button:hover {
+  background-color: #CD853F;
+  border: 5px solid #A0522D;
+  border-radius: 12px;
+  color: #8B4513;
   transition: 0.5s;
 }
 
@@ -70,7 +93,14 @@ nav li {
   color: #8B4513;
   display: inline-block;
   font-size: 20px;
-  padding: 10px 20px;
+  padding: 5px 10px;
+  transition: 0.5s;
+}
+#about-button:hover {
+  background-color: #CD853F;
+  border: 5px solid #A0522D;
+  border-radius: 12px;
+  color: #8B4513;
   transition: 0.5s;
 }
 
@@ -82,7 +112,14 @@ nav li {
   color: #8B4513;
   display: inline-block;
   font-size: 20px;
-  padding: 10px 20px;
+  padding: 5px 10px;
+  transition: 0.5s;
+}
+#contact-button:hover {
+  background-color: #CD853F;
+  border: 5px solid #A0522D;
+  border-radius: 12px;
+  color: #8B4513;
   transition: 0.5s;
 }
 
