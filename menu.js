@@ -1,3 +1,3 @@
 function redirectToHomepage() {
-  window.location.href = "index.html";
+  window.location.href = "menu.html";
 }
