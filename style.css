@@ -27,7 +27,26 @@ nav li {
   display: inline-block;
   margin-right: 20px;
 }
+#menu-button {
+  background-color: #21BC27;
+  border: 5px solid #20750D;
+  border-radius: 12px;
+  color: #CDFFCA;
+  display: inline-block;
+  font-size: 20px;
+  padding: 10px 20px;
+  transition: 0.5s;
+}
 
-nav a {
+#menu-button:hover {
+  background-color: yellow;
+  border: 5px groove blue;
+  border-radius: 0;
+  color: black;
+  transition: 0.5s;
+}
+
+
+<!--nav a {
  
-]
+]-->
