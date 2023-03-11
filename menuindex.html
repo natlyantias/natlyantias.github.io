@@ -14,7 +14,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
 
-    
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+</style>
+
     <style type="text/css">
     h1{
         font-family: 'Dancing Script', cursive;
@@ -22,6 +38,7 @@
       h2{
         font-family: 'Dancing Script', cursive;
       }
+         
     </style>
     
     <style type="text/css">
@@ -36,46 +53,41 @@
       h2 {text-align: center;
         font-size: 40px;}
       p {text-align: center;} 
-      
-    
-    
-    
-     <style> 
-       h1 {text-align: center;}
-       h2 {font-size: 13px;} 
+ 
+h1 {text-align: center;}
+       h2 {font-size: 20px;} 
+
     </style>
   </head>
   <body>
     <h1>Our Menu</h1>
-     <ul>
-      <li>
+    
+    
+    <div class="row">
+  <div class="column">
+      
         <h2>Croissants</h2>
         <p>Freshly baked flaky croissants</p>
         <p>$2.50 each</p>
-      </li>
-      <li>
+      
         <h2>Baguettes</h2>
         <p>Freshly baked French baguettes</p>
         <p>$3.00 each</p>
-      </li>
-      <li>
+     
+  </div>
+      
+      
+  <div class="column">
         <h2>Pain au Chocolat</h2>
         <p>Flaky pastry filled with chocolate</p>
         <p>$3.50 each</p>
-      </li>
-      <li>
+    
         <h2>Apple Tart</h2>
         <p>Buttery tart filled with cinnamon apples</p>
         <p>$4.50 each</p>
-      </li>
-      <li>
-        <h2>Quiche Lorraine</h2>
-        <p>Savory pastry filled with ham and cheese</p>
-        <p>$5.50 each</p>
-      </li>
-    </ul>
-  
-    
+   
+  </div>
+</div>   
     <script src="menu.js"></script>
   </body>
 </html>
