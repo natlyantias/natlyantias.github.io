@@ -7,18 +7,34 @@
   <body>
     <h1>Place an Order</h1>
 
-    <form>
+    <form action="" method="post">
 
-    <section class="orderInformation">
-      <label for="itemOrder">What item would you like?</label>
-      <br>
-      <input type="text", id="myItem">
-      <br>
-      <label for="numOrder">How many would you like?</label>
-      <br>
-      <input type="number", id="numItem">
-      <br>
-    </section>
+    <fieldset>
+      <legend>Item Form:</legend>
+      <section class="orderInformation">
+        <label for="itemOrder">What item would you like?</label>
+        <br>
+        <select name="items" id="items" multiple>
+          <option value="croissant">Croissant</option>
+          <select name="croissOpt" id="croissOpt" multiple>
+            <option value="classic">Classic Butter Croissant</option>
+            <option value="chocolateCrois">Chocolate Croissant</option>
+            <option value="almondCrois">Almond Croissant</option>
+          </select>
+          <option value="danishes">Danishes</option>
+          <select name="danOpt" id="danOpt" multiple>
+            <option value="fruitDan">Fruit Danish</option>
+            <option value="cheeseDan">Cheese Danish</option>
+            <option value="cinnaDan">Cinnamon Danish</option>
+          </select>
+        </select>
+        <br>
+        <label for="numOrder">How many would you like?</label>
+        <br>
+        <input type="number", id="numItem">
+        <br>
+      </section>
+    </fieldset>
 
     <section class="custInformation">
       <label for="userName">Name:</label>
