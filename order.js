@@ -4,13 +4,3 @@ function redirectToOrder() {
 
 document.getElementById("order-button").addEventListener("click", redirectToOrder);
 
-let custName;
-let custPhone;
-let custAddress;
-let numItem;
-let myItem;
-
-document.getElementById("orderButton").onclick = function(){
-  myItem = document.getElementById("itemOrder").value;
-  console.log(myItem);
-}
