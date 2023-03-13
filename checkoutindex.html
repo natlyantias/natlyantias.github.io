@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Place an Order</h1>
+
+    <hr>
+    <form action="" method="post">
+      <fieldset>
+        <legend>What Would You Like Today?</legend>
+        <label for="items">Items Available:</label>
+        <section class="selection">
+          <label for="croissant">Croissants</label>
+          <br>
+          <input type="checkbox" name="croissant" id="butterCrois" value="butterCrois">
+          <label for="butterCrois">Classic Butter Croissant</label>
+          <input type="checkbox" name="croissant" id="cocoCrois" value="cocoCrois">
+          <label for="cocoCrois">Chocolate Croissant</label>
+          <input type="checkbox" name="croissant" id="almCrois" value="almCrois">
+          <label for="almCrois">Almond Croissant</label>
+          <br><br>
+          <label for="danish">Danishes</label>
+          <br>
+          <input type="checkbox" name="danish" id="fruitDan" value="fruitDan">
+          <label for="fruitDan">Fruit Danish</label>
+          <input type="checkbox" name="danish" id="cheeseDan" value="cheeseDan">
+          <label for="cheeseDan">Cheese Danish</label>
+          <input type="checkbox" name="danish" id="cinnaDan" value="cinnaDan">
+          <label for="cinnaDan">Cinnamon Danish</label>
+          <br><br>
+          <label for="muffins">Muffins:</label>
+          <br>
+          <input type="checkbox" name="muffin" id="blueMuff" value="blueMuff">
+          <label for="blueMuff">Blueberry Muffin</label>
+          <input type="checkbox" name="muffin" id="cocoMuff" value="cocoMuff">
+          <label for="cocoMuff">Chocolate Chip Muffin</label>
+          <input type="checkbox" name="muffin" id="nanaMuff" value="nanaMuff">
+          <label for="nanaMuff">Banana Nut Muffin</label>
+          <br><br>
+          <label for="scone">Scones:</label>
+          <br>
+          <input type="checkbox" name="scone" id="blueScone" value="blueScone">
+          <label for="blueScone">Blueberry Scone</label>
+          <input type="checkbox" name="scone" id="cocoScone" value="cocoScone">
+          <label for="cocoScone">Chocolate Chip Scone</label>
+          <input type="checkbox" name="scone" id="lemonScone" value="lemonScone">
+          <label for="lemonScone">Lemon Poppyseed Scone</label>
+          <br><br>
+          <label for="pietart">Pies and Tarts:</label>
+          <br>
+          <input type="checkbox" name="pietart" id="applePie" value="applePie">
+          <label for="applePie">Apple Pie</label>
+          <input type="checkbox" name="pietart" id="cherryPie" value="cherryPie">
+          <label for="cherryPie">Cherry Pie</label>
+          <input type="checkbox" name="pietart" id="bluePie" value="bluePie">
+          <label for="bluePie">Blueberry Pie</label>
+          <input type="checkbox" name="pietart" id="lemonTart" value="lemonTart">
+          <label for="lemonTart">Lemon Tart</label>
+          <input type="checkbox" name="pietart" id="cocoTart" value="cocoTart">
+          <label for="cocoTart">Chocolate Tart</label>
+          <input type="checkbox" name="pietart" id="fruitTart" value="fruitTart">
+          <label for="fruitTart">Fruit Tart</label>
+          <br><br>
+          <label for="cake">Cakes</label>
+          <br>
+          <input type="checkbox" name="cake" id="cocoCake" value="cocoCake">
+          <label for="cocoCake">Chocolate Cake</label>
+          <input type="checkbox" name="cake" id="nillaCake" value="nillaCake">
+          <label for="nillaCake">Vanilla Cake</label>
+          <input type="checkbox" name="cake" id="redCake" value="redCake">
+          <label for="redCake">Red Velvet Cake</label>
+          <input type="checkbox" name="cake" id="carrotCake" value="carrotCake">
+          <label for="carrotCake">Carrot Cake</label>
+          <br><br>
+          <label for="cookie">Cookies</label>
+          <input type="checkbox" name="cookie" id="cocoCookie" value="cocoCookie">
+          <label for="cocoCookie">Chocolate Chip Cookie</label>
+          <input type="checkbox" name="cookie" id="oatmealCookie" value="oatmealCookie">
+          <label for="oatmealCookie">Oatmeal Raisin Cookie</label>
+          <input type="checkbox" name="cookie" id="peanutCookie" value="peanutCookie">
+          <label for="peanutCookie">Peanut Butter Cookie</label>
+          <input type="checkbox" name="cookie" id="sugarCookie" value="sugarCookie">
+          <label for="sugarCookie">Sugar Cookie</label>
+        </section>
+      </fieldset>
+
+      <section class="custInformation">
+        <label for="custName">Name:</label><br>
+        <input type="text" name="custName" id="custName"><br>
+        <label for="custAddress">Address:</label><br>
+        <input type="text" name="custAddress" id="custAddress"><br>
+        <label for="custPhone">Phone Number:</label><br>
+        <input type="text" name="custPhone" id="custName"><br>
+      </section>
+
+      <nav>
+        <ul>
+          <li><button id="submit-button">Submit</button></li>
+          </ul>
+      </nav>
+    </form>
+    
+
+    <script src="order.js"></script>
+    <script src="checkout.js"></script>
+  </body>
+</html>
