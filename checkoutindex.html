@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Checkout</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Bakery Checkout</title>
   </head>
   <body>
-    <h1>Checkout</h1>
+    <h1>Bakery Checkout</h1>
+    <form action="/checkout" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br>
 
-    <hr>
-    <form method="post">
-     <label for="payment">Payment Method:</label>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" required><br>
+
+      <label for="address">Address:</label>
+      <textarea id="address" name="address" rows="4" cols="30" required></textarea><br>
+
+      <label for="payment">Payment Method:</label>
       <select id="payment" name="payment" required>
         <option value="">Choose Payment Method</option>
         <option value="credit_card">Credit Card</option>
@@ -25,20 +34,34 @@
 
       <label for="cvv">CVV:</label>
       <input type="text" id="cvv" name="cvv"><br>
-      
+
       <h2>Order Summary</h2>
-     
+      <table>
         <tr>
           <th>Item</th>
           <th>Quantity</th>
           <th>Price</th>
         </tr>
-      
-      
+        <tr>
+          <td>Chocolate Cake</td>
+          <td>2</td>
+          <td>$20.00</td>
+        </tr>
+        <tr>
+          <td>Croissants</td>
+          <td>5</td>
+          <td>$10.00</td>
+        </tr>
+        <tr>
+          <td>Blueberry Muffins</td>
+          <td>3</td>
+          <td>$6.00</td>
+        </tr>
+      </table>
 
-    <input type="submit" value="Place Order">
+      <h2>Total: $36.00</h2>
 
-    <script src="checkout.js"></script>
+      <input type="submit" value="Place Order">
     </form>
   </body>
 </html>
