@@ -1,8 +1,5 @@
-
-
-const form = document.getElementById('order-form');
-const submitButton = document.getElementById('submit-button');
-
-submitButton.addEventListener('click', function() {
+function redirectToContact() {
   window.location.href = "checkoutindex.html";
-});
+}
+
+document.getElementById("submit-button").addEventListener("click", redirectToContact);
