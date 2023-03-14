@@ -2,4 +2,4 @@ function redirectToCheckout() {
   window.location.href = "checkoutindex.html";
 }
 
-document.getElementById("checkout-button").addEventListener("click", redirectToCheckout);
+document.getElementById("submit-button").addEventListener("click", redirectToCheckout);
