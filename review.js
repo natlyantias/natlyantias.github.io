@@ -11,3 +11,5 @@ function redirectToReview() {
 }
 
 document.getElementById("review-button").addEventListener("click", redirectToReview);
+
+
