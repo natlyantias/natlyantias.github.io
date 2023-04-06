@@ -9,14 +9,16 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 app.use(express.json());
 
+
+
 //Reads out the information 
-con.getConnection(function(err) {
+/*con.getConnection(function(err) {
     if (err) throw err;
     con.query("SELECT * FROM product", function (err, result, fields) {
       if (err) throw err;
       console.log(result);
     });
-  });
+  });*/
   
 
 
