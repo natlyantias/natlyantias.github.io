@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 app.use(express.json());
 
+app.listen(3000);
+
 
 
 //Reads out the information 
@@ -21,16 +23,15 @@ app.use(express.json());
   });*/
   
 
-
-/*app.post("/", function(request, response){
+app.post("/", function(request, response){
     var reviewRate = req.body.reviewRate;
     var review = req.body.review;
-    
+
     console.log(reviewRate, review);
 
     var sql = 'INSERT into review (reviewRating, reviewDesc) values ?';
 
-    var values = [reviewRate, review];
+    var values = [[reviewRate, review]];
     
     con.query(sql, [values], function(err, result){
         if(err) throw err;
@@ -38,4 +39,4 @@ app.use(express.json());
         console.log("Data uploaded");
         response.redirect('/');
     });
-});*/
+});
