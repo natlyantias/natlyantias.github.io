@@ -16,36 +16,39 @@ connection.connect((err) => {
   console.log("Connected to MySQL database!");
 });
 
-// Don't import the `con` object from a separate file; use the `connection` object instead
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public')); // serve static files in the public directory
 app.listen(3000);
 
-app.post("/", function(request, response){
-    var reviewRate = request.body.reviewRate;
-    var review = request.body.review;
+app.get("/", function(req, res){
+    res.sendFile(__dirname + "/index.html");
+});
+
+app.post("/", function(req, res){
+    var reviewRate = req.body.reviewRate;
+    var review = req.body.review;
 
     console.log(reviewRate, review);
 
     var sql = 'INSERT INTO review (reviewRating, reviewDesc) VALUES (?, ?)';
     var values = [reviewRate, review];
 
-    // Use the `connection` object to execute the query, not the `con` object
     connection.query(sql, values, function(err, result){
         if(err) throw err;
 
         console.log("Data uploaded");
-        response.redirect('/');
+        res.redirect('/');
     });
 });
 
-app.post("/orders", function(request, response){
-  var name = request.body.name;
-  var email = request.body.email;
-  var phone = request.body.phone;
-  var address = request.body.address;
-  var order = request.body.order;
+app.post("/orders", function(req, res){
+  var name = req.body.name;
+  var email = req.body.email;
+  var phone = req.body.phone;
+  var address = req.body.address;
+  var order = req.body.order;
 
   console.log(name, email, phone, address, order);
 
@@ -56,21 +59,24 @@ app.post("/orders", function(request, response){
       if(err) throw err;
 
       console.log("Order uploaded");
-      response.redirect('/');
+      res.redirect('/');
   });
 });
 
-
-const stripe = require('stripe')('your_stripe_secret_key');
-
-app.post('/create-checkout-session', async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
-    line_items: req.body.items,
-    mode: 'payment',
-    success_url: 'https://example.com/success',
-    cancel_url: 'https://example.com/cancel',
-  });
-  res.json({ id: session.id });
+app.get("/checkout", function(req, res){
+    res.sendFile(__dirname + "/checkoutindex.html");
 });
 
+app.post("/checkout", function(req, res){
+    var name = req.body.name;
+    var email = req.body.email;
+    var phone = req.body.phone;
+    var address = req.body.address;
+    var order = req.body.order;
+
+    console.log(name, email, phone, address, order);
+
+    // Do something with the order data
+
+    res.redirect('/');
+});
