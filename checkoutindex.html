@@ -9,38 +9,35 @@
     <hr>
     <form action="confirmation.html" >
       
-      
-     <!-- Order summary -->
-      <div id="order-summary"></div>
-      <h2>Selected Items</h2>
-	<table>
-		<tr>
-			<th>Item</th>
-			<th>Price</th>
-		</tr>
-		{% for item in selected_items %}
-		<tr>
-			<td>{{ item.name }}</td>
-			<td>${{ item.price }}</td>
-		</tr>
-		{% endfor %}
-	</table>
-	<h2>Subtotal: ${{ subtotal }}</h2>
-	<h2>Tax: ${{ tax }}</h2>
-	<h2>Total: ${{ total }}</h2>
+  <!-- Order summary -->
+  <div id="order-summary"></div>
+  <h2>Selected Items</h2>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+    </tr>
+    {% for item in selected_items %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>${{ item.price }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <h2>Subtotal: ${{ subtotal }}</h2>
+  <h2>Tax: ${{ tax }}</h2>
+  <h2>Total: ${{ total }}</h2>
 
-        // Display the selected items and quantities in the order summary
-        const orderSummary = document.querySelector('#order-summary');
-        orderSummary.innerHTML = '<h2>Your Order</h2>';
-        orderSummary.innerHTML += '<ul>';
-        for (const [item, quantity] of Object.entries(itemQuantities)) {
-          orderSummary.innerHTML += `<li>${quantity} x ${item}</li>`;
-        }
-        orderSummary.innerHTML += '</ul>';
-      </script>
-      
-      
-      
+  <!-- Display the selected items and quantities in the order summary -->
+  <script>
+    const orderSummary = document.querySelector('#order-summary');
+    orderSummary.innerHTML = '<h2>Your Order</h2>';
+    orderSummary.innerHTML += '<ul>';
+    for (const [item, quantity] of Object.entries(itemQuantities)) {
+      orderSummary.innerHTML += `<li>${quantity} x ${item}</li>`;
+    }
+    orderSummary.innerHTML += '</ul>';
+  </script>
       
       <h2>Shipping Information</h2>
 <label for="first-name">First Name:</label><br>
