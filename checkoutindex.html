@@ -19,24 +19,46 @@
       <label for="address">Address:</label><br>
       <textarea id="address" name="address" rows="4" cols="50" required></textarea><br>
 <br>
-    <h2>Payment Information</h2>
-      <label for="payment">Payment Method:</label>
-      <select id="payment" name="payment" required>
-        <option value="">Choose Payment Method</option>
-        <option value="credit_card">Credit Card</option>
-        <option value="paypal">PayPal</option>
-        <option value="cash">Cash On Delivery</option>
-      </select><br>
+  
+      <h2>Payment Information</h2>
+<label for="payment">Payment Method:</label>
+<select id="payment" name="payment" required>
+  <option value="">Choose Payment Method</option>
+  <option value="credit_card">Credit Card</option>
+  <option value="paypal">PayPal</option>
+  <option value="cash">Cash On Delivery</option>
+</select><br>
 
-      <label for="card">Credit Card Number:</label>
-      <input type="text" id="card" name="card"><br>
+<div id="card-info">
+  <label for="card">Credit Card Number:</label>
+  <input type="text" id="card" name="card"><br>
 
-      <label for="expiry">Expiry Date:</label>
-      <input type="month" id="expiry" name="expiry"><br>
+  <label for="expiry">Expiry Date:</label>
+  <input type="month" id="expiry" name="expiry"><br>
 
-      <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" name="cvv"><br>
+  <label for="cvv">CVV:</label>
+  <input type="text" id="cvv" name="cvv"><br>
+</div>
 
+<script>
+  // hide card info fields by default
+  var cardInfoDiv = document.getElementById("card-info");
+  cardInfoDiv.style.display = "none";
+
+  // show card info fields when credit card or paypal is selected
+  var paymentSelect = document.getElementById("payment");
+  paymentSelect.addEventListener("change", function() {
+    var selectedValue = paymentSelect.value;
+    if (selectedValue === "credit_card" || selectedValue === "paypal") {
+      cardInfoDiv.style.display = "block";
+    } else {
+      cardInfoDiv.style.display = "none";
+    }
+  });
+</script>
+
+      
+      
       <h2>Order Summary</h2>
       <table>
         <tr>
