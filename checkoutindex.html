@@ -12,26 +12,22 @@
       
      <!-- Order summary -->
       <div id="order-summary"></div>
-      <p id="subtotal">Subtotal: $0</p>
-      <p id="total">Total: $0</p>
-    
-      <script>
-        // Get the form data
-        const formData = new FormData(document.querySelector('form'));
-
-        // Initialize an empty object to store the item quantities
-        const itemQuantities = {};
-
-        // Loop through the form data and count the selected items
-        for (const [name, value] of formData.entries()) {
-          if (name === 'item' && value) {
-            if (itemQuantities[value]) {
-              itemQuantities[value]++;
-            } else {
-              itemQuantities[value] = 1;
-            }
-          }
-        }
+      <h2>Selected Items</h2>
+	<table>
+		<tr>
+			<th>Item</th>
+			<th>Price</th>
+		</tr>
+		{% for item in selected_items %}
+		<tr>
+			<td>{{ item.name }}</td>
+			<td>${{ item.price }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<h2>Subtotal: ${{ subtotal }}</h2>
+	<h2>Tax: ${{ tax }}</h2>
+	<h2>Total: ${{ total }}</h2>
 
         // Display the selected items and quantities in the order summary
         const orderSummary = document.querySelector('#order-summary');
