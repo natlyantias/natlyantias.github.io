@@ -1,6 +1,5 @@
 const cart = [];
 const orderSummaryElement = document.querySelector('#order-summary');
-const totalElement = document.querySelector('#total');
 
 function redirectToOrder() {
   window.location.href = "orderindex.html";
@@ -26,12 +25,11 @@ function addToCart(name, price) {
 
 function updateOrderSummary() {
   let total = 0;
-  let html = '';
+  let html = '<table><tr><th>Item</th><th>Quantity</th><th>Price</th></tr>';
   cart.forEach(item => {
-    html += `<li>${item.name} - ${item.price}</li>`;
+    html += `<tr><td>${item.name}</td><td>1</td><td>${item.price}</td></tr>`;
     total += parseFloat(item.price);
   });
-  html += `<li>Total: ${total.toFixed(2)}</li>`;
+  html += `<tr><td colspan="3">Total: ${total.toFixed(2)}</td></tr></table>`;
   orderSummaryElement.innerHTML = html;
-  totalElement.textContent = `Total: $${total.toFixed(2)}`;
 }
