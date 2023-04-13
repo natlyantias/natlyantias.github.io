@@ -6,34 +6,31 @@
   </head>
   <body>
     <h1>Checkout</h1>
-    <hr>
-    <form action="confirmation.html" >
-      
- <!-- Order summary -->
-<div id="order-summary">
-  <h2>Your Order</h2>
-  <ul>
-    {% for item in selected_items %}
-    <li>{{ item.quantity }} x {{ item.name }} - ${{ item.price }}</li>
-    {% endfor %}
-  </ul>
-  <h2>Subtotal: ${{ subtotal }}</h2>
-  <h2>Tax: ${{ tax }}</h2>
-  <h2>Total: ${{ total }}</h2>
-</div>
+    
+    
+    <h2>Selected Items:</h2>
+  <ul id="cart-list"></ul>
 
-<!-- Display the selected items and quantities in the order summary -->
-<script>
-  const orderSummary = document.querySelector('#order-summary');
-  const selectedItems = {{ selected_items|tojson }};
-  const itemQuantities = {{ item_quantities|tojson }};
-  orderSummary.innerHTML = '<h2>Your Order</h2><ul>';
-  for (const item of selectedItems) {
-    const quantity = itemQuantities[item.id];
-    orderSummary.innerHTML += `<li>${quantity} x ${item.name} - $${item.price}</li>`;
-  }
-  orderSummary.innerHTML += '</ul>';
-</script>
+  <h2>Total:</h2>
+  <p id="total"></p>
+
+  <script src="checkout.js"></script>
+  <script>
+    // Display cart items and total on the checkout page
+    const cartListElement = document.getElementById('cart-list');
+    const totalElement = document.getElementById('total');
+    let total = 0;
+    cart.forEach(item => {
+      const listItem = document.createElement('li');
+      listItem.innerText = `${item.name} - ${item.price}`;
+      cartListElement.appendChild(listItem);
+      total += parseFloat(item.price);
+    });
+    totalElement.innerText = `Total: $${total.toFixed(2)}`;
+  </script>
+    
+    
+    
       
       <h2>Shipping Information</h2>
 <label for="first-name">First Name:</label><br>
