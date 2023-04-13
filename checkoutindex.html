@@ -6,52 +6,25 @@
   </head>
   <body>
     <h1>Checkout</h1>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody id="cart-items">
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3">Total:</td>
-          <td id="cart-total"></td>
-        </tr>
-      </tfoot>
-    </table>
-  </body>
+    <h2>Selected Items:</h2>
+  <ul id="cart-list"></ul>
+
+  <h2>Total:</h2>
+  <p id="total"></p>
+
+  <script src="checkout.js"></script>
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const cartItems = document.querySelector('#cart-items');
-      const cartTotal = document.querySelector('#cart-total');
-      const cart = getCart();
-      let total = 0;
-      for (let item of cart) {
-        const row = document.createElement('tr');
-        const nameCell = document.createElement('td');
-        const qtyCell = document.createElement('td');
-        const priceCell = document.createElement('td');
-        const totalCell = document.createElement('td');
-        nameCell.textContent = item.name;
-        qtyCell.textContent = item.qty;
-        priceCell.textContent = item.price.toFixed(2);
-        totalCell.textContent = (item.qty * item.price).toFixed(2);
-        total += item.qty * item.price;
-        row.appendChild(nameCell);
-        row.appendChild(qtyCell);
-        row.appendChild(priceCell);
-        row.appendChild(totalCell);
-        cartItems.appendChild(row);
-      }
-      cartTotal.textContent = total.toFixed(2);
-      clearCart();
+    // Display cart items and total on the checkout page
+    const cartListElement = document.getElementById('cart-list');
+    const totalElement = document.getElementById('total');
+    let total = 0;
+    cart.forEach(item => {
+      const listItem = document.createElement('li');
+      listItem.innerText = `${item.name} - ${item.price}`;
+      cartListElement.appendChild(listItem);
+      total += parseFloat(item.price);
     });
+    totalElement.innerText = `Total: $${total.toFixed(2)}`;
   </script>
     
     
