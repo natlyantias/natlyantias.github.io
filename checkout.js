@@ -35,4 +35,8 @@ function updateOrderSummary() {
   html += `<li>Total: $${total.toFixed(2)}</li>`;
   orderSummaryElement.innerHTML = html;
   totalElement.textContent = `Total: $${total.toFixed(2)}`;
+  
+  // set the total dynamically
+  const totalAmountElement = document.getElementById('total-amount');
+  totalAmountElement.textContent = total.toFixed(2);
 }
