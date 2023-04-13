@@ -1,39 +1,11 @@
 const cart = [];
+const orderSummaryElement = document.querySelector('#order-summary');
 
-function addToCart(name, price) {
-  const item = { name, price };
-  cart.push(item);
-  updateOrderSummary();
+function redirectToOrder() {
+  window.location.href = "orderindex.html";
 }
 
-function updateOrderSummary() {
-  const orderSummary = document.getElementById("order-summary");
-  let totalPrice = 0;
-  orderSummary.innerHTML = "";
-  cart.forEach(item => {
-    const itemPrice = item.price * item.quantity;
-    totalPrice += itemPrice;
-    const itemHTML = `
-      <li>
-        ${item.name}: $${item.price} x ${item.quantity} = $${itemPrice}
-      </li>
-    `;
-    orderSummary.insertAdjacentHTML("beforeend", itemHTML);
-  });
-  orderSummary.insertAdjacentHTML("beforeend", `<hr><strong>Total Price:</strong> $${totalPrice}`);
-}
-
-function redirectToCheckout() {
-  if (cart.length > 0) {
-    const itemsJSON = JSON.stringify(cart);
-    localStorage.setItem("cart", itemsJSON);
-    window.location.href = "checkoutindex.html";
-  } else {
-    alert("Your cart is empty! Please add items to proceed to checkout.");
-  }
-}
-
-document.getElementById("order-button").addEventListener("click", redirectToCheckout);
+document.getElementById("order-button").addEventListener("click", redirectToOrder);
 
 const menuItems = document.querySelectorAll('.menu-item');
 menuItems.forEach(item => {
@@ -44,3 +16,20 @@ menuItems.forEach(item => {
     addToCart(name, price);
   });
 });
+
+function addToCart(name, price) {
+  const item = { name, price };
+  cart.push(item);
+  updateOrderSummary();
+}
+
+function updateOrderSummary() {
+  let total = 0;
+  let html = '';
+  cart.forEach(item => {
+    html += `<li>${item.name} - ${item.price}</li>`;
+    total += parseFloat(item.price);
+  });
+  html += `<li>Total: ${total.toFixed(2)}</li>`;
+  orderSummaryElement.innerHTML = html;
+}
