@@ -2,72 +2,140 @@
 <html>
   <head>
     <title>Checkout</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="checkout.js"></script>
+     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <h1>Checkout</h1>
     <hr>
-    <section id="order-summary"></section>
-    <hr>
-    <h2>Customer Information</h2>
-    <form>
-      <fieldset>
-        <legend>Personal Information:</legend>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required><br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required><br>
-        <label for="phone">Phone:</label>
-        <input type="tel" name="phone" id="phone" required><br>
-      </fieldset>
-      <fieldset>
-        <legend>Payment Information:</legend>
-        <label for="card-number">Card Number:</label>
-        <input type="text" name="card-number" id="card-number" required><br>
-        <label for="exp-date">Expiration Date:</label>
-        <input type="text" name="exp-date" id="exp-date" required><br>
-        <label for="cvv">CVV:</label>
-        <input type="text" name="cvv" id="cvv" required><br>
-      </fieldset>
-      <button type="submit" id="place-order-button">Place Order</button>
+    <form action="confirmation.html" >
+
+<h2>Order Summary</h2>
+<ul id="order-summary">
+</ul>
+<p id="total">Total: $<span id="total-amount">0.00</span></p>
+
+
+<script src="checkout.js"></script>
+      
+      
+      
+      <h2>Shipping Information</h2>
+<label for="first-name">First Name:</label><br>
+<input type="text" id="first-name" name="first-name" required><br>
+<label for="last-name">Last Name:</label><br>
+<input type="text" id="last-name" name="last-name" required><br>
+<label for="street">Street Address:</label><br>
+<input type="text" id="street" name="street" required><br>
+<label for="city">City:</label><br>
+<input type="text" id="city" name="city" required><br>
+<label for="state">State:</label><br>
+<select id="state" name="state" required>
+  <option value="" disabled selected>Select State</option>
+  <option value="AL">Alabama</option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+   <option value="WY">Wyoming</option>
+</select><br>
+<label for="zip">Zip Code:</label><br>
+<input type="text" id="zip" name="zip" required><br>
+<label for="email">Email:</label><br>
+<input type="email" id="email" name="email" required><br>
+<label for="phone">Phone:</label><br>
+<input type="tel" id="phone" name="phone" required><br>
+      
+      
+<br>
+  
+      <h2>Payment Information</h2> <br>
+<label for="payment">Payment Method:</label>
+<select id="payment" name="payment" required>
+  <option value="">Choose Payment Method</option>
+  <option value="credit_card">Credit Card</option>
+  <option value="paypal">PayPal</option>
+  <option value="cash">Cash On Delivery</option>
+</select><br>
+
+<div id="card-info">
+  <label for="card">Credit Card Number:</label>
+  <input type="text" id="card" name="card"><br>
+
+  <label for="expiry">Expiry Date:</label>
+  <input type="month" id="expiry" name="expiry"><br>
+
+  <label for="cvv">CVV:</label>
+  <input type="text" id="cvv" name="cvv"><br>
+</div>
+
+<script>
+  // hide card info fields by default
+  var cardInfoDiv = document.getElementById("card-info");
+  cardInfoDiv.style.display = "none";
+
+  // show card info fields when credit card or paypal is selected
+  var paymentSelect = document.getElementById("payment");
+  paymentSelect.addEventListener("change", function() {
+    var selectedValue = paymentSelect.value;
+    if (selectedValue === "credit_card" || selectedValue === "paypal") {
+      cardInfoDiv.style.display = "block";
+    } else {
+      cardInfoDiv.style.display = "none";
+    }
+  });<br><br>
+</script>
+
+  
+      <nav>
+          <button id="confirmation-button">Place Order</button>
+         </nav>
+      
     </form>
-    <script>
-      const orderSummaryElement = document.querySelector('#order-summary');
-
-      function calculateTotal() {
-        let total = 0;
-        const items = document.querySelectorAll('.item');
-        items.forEach(item => {
-          const quantity = parseInt(item.querySelector('.quantity').value);
-          const price = parseFloat(item.dataset.price);
-          total += quantity * price;
-        });
-        orderSummaryElement.querySelector('#total').textContent = total.toFixed(2);
-      }
-
-      function updateQuantity(event) {
-        calculateTotal();
-      }
-
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let html = '<table><tr><th>Item</th><th>Quantity</th><th>Price</th></tr>';
-      cart.forEach(item => {
-        html += `
-          <tr class="item" data-name="${item.name}" data-price="${item.price}">
-            <td>${item.name}</td>
-            <td><input type="number" class="quantity" value="1" min="1" max="10"></td>
-            <td>${item.price}</td>
-          </tr>
-        `;
-      });
-      html += `<tr><td colspan="2">Total:</td><td id="total">0.00</td></tr></table>`;
-      orderSummaryElement.innerHTML = html;
-
-      const quantityInputs = document.querySelectorAll('.quantity');
-      quantityInputs.forEach(input => {
-        input.addEventListener('input', updateQuantity);
-      });
-    </script>
+    <script src="confirmation.js"></script>
   </body>
 </html>
