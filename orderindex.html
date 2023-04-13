@@ -3,45 +3,12 @@
   <head>
     <title>Order Page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    
-    
-     <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        const items = document.querySelectorAll('input[type="checkbox"]');
-        items.forEach(item => {
-          item.addEventListener('click', () => {
-            updateOrderSummary();
-          });
-        });
-
-        function updateOrderSummary() {
-          const orderSummary = document.getElementById('order-summary');
-          let orderTotal = 0;
-          let orderDetails = '';
-
-          items.forEach(item => {
-            if (item.checked) {
-              const itemName = item.nextElementSibling.textContent;
-              const itemQty = item.parentNode.querySelector('select').value;
-              const itemPrice = Number(item.dataset.price);
-              const itemTotal = itemQty * itemPrice;
-              orderTotal += itemTotal;
-              orderDetails += `${itemQty} x ${itemName}: $${itemTotal.toFixed(2)}<br>`;
-            }
-          });
-
-          orderSummary.innerHTML = `Order Summary:<br>${orderDetails}Total: $${orderTotal.toFixed(2)}`;
-        }
-      });
-    </script>
-    
-    
   </head>
   <body>
     <h1>Place an Order!</h1>
 
     <hr>
-    <form action="checkoutindex.html" >
+    <form action="checkoutindex.html">
       <fieldset>
         <legend>What Would You Like Today??</legend>
         <label for="items">Items Available:</label>
