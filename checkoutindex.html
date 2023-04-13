@@ -9,35 +9,31 @@
     <hr>
     <form action="confirmation.html" >
       
-  <!-- Order summary -->
-  <div id="order-summary"></div>
-  <h2>Selected Items</h2>
-  <table>
-    <tr>
-      <th>Item</th>
-      <th>Price</th>
-    </tr>
+ <!-- Order summary -->
+<div id="order-summary">
+  <h2>Your Order</h2>
+  <ul>
     {% for item in selected_items %}
-    <tr>
-      <td>{{ item.name }}</td>
-      <td>${{ item.price }}</td>
-    </tr>
+    <li>{{ item.quantity }} x {{ item.name }} - ${{ item.price }}</li>
     {% endfor %}
-  </table>
+  </ul>
   <h2>Subtotal: ${{ subtotal }}</h2>
   <h2>Tax: ${{ tax }}</h2>
   <h2>Total: ${{ total }}</h2>
+</div>
 
-  <!-- Display the selected items and quantities in the order summary -->
-  <script>
-    const orderSummary = document.querySelector('#order-summary');
-    orderSummary.innerHTML = '<h2>Your Order</h2>';
-    orderSummary.innerHTML += '<ul>';
-    for (const [item, quantity] of Object.entries(itemQuantities)) {
-      orderSummary.innerHTML += `<li>${quantity} x ${item}</li>`;
-    }
-    orderSummary.innerHTML += '</ul>';
-  </script>
+<!-- Display the selected items and quantities in the order summary -->
+<script>
+  const orderSummary = document.querySelector('#order-summary');
+  const selectedItems = {{ selected_items|tojson }};
+  const itemQuantities = {{ item_quantities|tojson }};
+  orderSummary.innerHTML = '<h2>Your Order</h2><ul>';
+  for (const item of selectedItems) {
+    const quantity = itemQuantities[item.id];
+    orderSummary.innerHTML += `<li>${quantity} x ${item.name} - $${item.price}</li>`;
+  }
+  orderSummary.innerHTML += '</ul>';
+</script>
       
       <h2>Shipping Information</h2>
 <label for="first-name">First Name:</label><br>
