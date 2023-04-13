@@ -5,28 +5,38 @@
      <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Checkout</h1>
+    <h1>Checkout!!</h1>
     
     
-    <h2>Selected Items:</h2>
-  <ul id="cart-list"></ul>
+    <ul id="order-summary"></ul>
 
-  <h2>Total:</h2>
   <p id="total"></p>
+
+  <button id="submit-order">Submit Order</button>
 
   <script src="checkout.js"></script>
   <script>
     // Display cart items and total on the checkout page
-    const cartListElement = document.getElementById('cart-list');
+    const orderSummaryElement = document.getElementById('order-summary');
     const totalElement = document.getElementById('total');
     let total = 0;
+
     cart.forEach(item => {
-      const listItem = document.createElement('li');
-      listItem.innerText = `${item.name} - ${item.price}`;
-      cartListElement.appendChild(listItem);
+      const li = document.createElement('li');
+      li.textContent = `${item.name} - ${item.price}`;
+      orderSummaryElement.appendChild(li);
       total += parseFloat(item.price);
     });
-    totalElement.innerText = `Total: $${total.toFixed(2)}`;
+
+    const totalText = `Total: $${total.toFixed(2)}`;
+    totalElement.textContent = totalText;
+
+    // Submit order when the Submit Order button is clicked
+    const submitButton = document.getElementById('submit-order');
+    submitButton.addEventListener('click', () => {
+      // Here you can add the code to submit the order and redirect the user to the confirmation page.
+      // You can also clear the cart and display a confirmation message to the user.
+    });
   </script>
     
     
