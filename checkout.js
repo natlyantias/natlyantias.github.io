@@ -1,7 +1,10 @@
 const cart = [];
 
 function redirectToCheckout() {
-  window.location.href = "checkoutindex.html";
+  const checkoutUrl = new URL('checkoutindex.html', window.location.href);
+  checkoutUrl.searchParams.set('items', JSON.stringify(cart));
+  checkoutUrl.searchParams.set('total', getTotalPrice());
+  window.location.href = checkoutUrl.toString();
 }
 
 document.getElementById("checkout-button").addEventListener("click", redirectToCheckout);
