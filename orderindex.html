@@ -3,6 +3,39 @@
   <head>
     <title>Order Page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    
+    
+     <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('input[type="checkbox"]');
+        items.forEach(item => {
+          item.addEventListener('click', () => {
+            updateOrderSummary();
+          });
+        });
+
+        function updateOrderSummary() {
+          const orderSummary = document.getElementById('order-summary');
+          let orderTotal = 0;
+          let orderDetails = '';
+
+          items.forEach(item => {
+            if (item.checked) {
+              const itemName = item.nextElementSibling.textContent;
+              const itemQty = item.parentNode.querySelector('select').value;
+              const itemPrice = Number(item.dataset.price);
+              const itemTotal = itemQty * itemPrice;
+              orderTotal += itemTotal;
+              orderDetails += `${itemQty} x ${itemName}: $${itemTotal.toFixed(2)}<br>`;
+            }
+          });
+
+          orderSummary.innerHTML = `Order Summary:<br>${orderDetails}Total: $${orderTotal.toFixed(2)}`;
+        }
+      });
+    </script>
+    
+    
   </head>
   <body>
     <h1>Place an Order!</h1>
@@ -15,9 +48,9 @@
         <section class="selection">
           <label for="croissant">Croissants:</label>
           <br>
-          <input type="checkbox" name="croissant" id="butterCrois" value="butterCrois">
+          <input type="checkbox" name="croissant" id="butterCrois" value="butterCrois" data-price="3.00">
           <label for="butterCrois">Classic Butter Croissant</label>
-          <select name="butterCrois" id="butterCrois">
+          <select name="butterCrois" id="butterCroisQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -25,9 +58,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="croissant" id="cocoCrois" value="cocoCrois">
+          <input type="checkbox" name="croissant" id="cocoCrois" value="cocoCrois" data-price="3.50">
           <label for="cocoCrois">Chocolate Croissant</label>
-          <select name="cocoCrois" id="cocoCrois">
+          <select name="cocoCrois" id="cocoCroisQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -35,9 +68,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="croissant" id="almCrois" value="almCrois">
+          <input type="checkbox" name="croissant" id="almCrois" value="almCrois" data-price="3.50">
           <label for="almCrois">Almond Croissant</label>
-          <select name="almCrois" id="almCrois">
+          <select name="almCrois" id="almCroisQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -48,9 +81,9 @@
           <br>
           <label for="danish">Danishes:</label>
           <br>
-          <input type="checkbox" name="danish" id="fruitDan" value="fruitDan">
+          <input type="checkbox" name="danish" id="fruitDan" value="fruitDan" data-price="3.00">
           <label for="fruitDan">Fruit Danish</label>
-          <select name="fruitDan" id="fruitDan">
+          <select name="fruitDan" id="fruitDanQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -58,9 +91,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="danish" id="cheeseDan" value="cheeseDan">
+          <input type="checkbox" name="danish" id="cheeseDan" value="cheeseDan" data-price="2.50">
           <label for="cheeseDan">Cheese Danish</label>
-          <select name="cheeseDan" id="cheeseDan">
+          <select name="cheeseDan" id="cheeseDanQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -68,9 +101,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="danish" id="cinnaDan" value="cinnaDan">
+          <input type="checkbox" name="danish" id="cinnaDan" value="cinnaDan" data-price="2.00">
           <label for="cinnaDan">Cinnamon Danish</label>
-          <select name="cinnaDan" id="cinnaDan">
+          <select name="cinnaDan" id="cinnaDanQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -81,9 +114,9 @@
           <br>
           <label for="muffins">Muffins:</label>
           <br>
-          <input type="checkbox" name="muffin" id="blueMuff" value="blueMuff">
+          <input type="checkbox" name="muffin" id="blueMuff" value="blueMuff" data-price="2.00">
           <label for="blueMuff">Blueberry Muffin</label>
-          <select name="blueMuff" id="blueMuff">
+          <select name="blueMuff" id="blueMuffQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -91,9 +124,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="muffin" id="cocoMuff" value="cocoMuff">
+          <input type="checkbox" name="muffin" id="cocoMuff" value="cocoMuff" data-price="3.00">
           <label for="cocoMuff">Chocolate Chip Muffin</label>
-          <select name="cocoMuff" id="cocoMuff">
+          <select name="cocoMuff" id="cocoMuffQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -101,9 +134,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="muffin" id="nanaMuff" value="nanaMuff">
+          <input type="checkbox" name="muffin" id="nanaMuff" value="nanaMuff" data-price="3.00">
           <label for="nanaMuff">Banana Nut Muffin</label>
-          <select name="nanaMuff" id="nanaMuff">
+          <select name="nanaMuff" id="nanaMuffQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -114,9 +147,9 @@
           <br>
           <label for="scone">Scones:</label>
           <br>
-          <input type="checkbox" name="scone" id="blueScone" value="blueScone">
+          <input type="checkbox" name="scone" id="blueScone" value="blueScone" data-price="3.50">
           <label for="blueScone">Blueberry Scone</label>
-          <select name="blueScone" id="blueScone">
+          <select name="blueScone" id="blueSconeQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -124,9 +157,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="scone" id="cocoScone" value="cocoScone">
+          <input type="checkbox" name="scone" id="cocoScone" value="cocoScone" data-price="4.00">
           <label for="cocoScone">Chocolate Chip Scone</label>
-          <select name="cocoScone" id="cocoScone">
+          <select name="cocoScone" id="cocoSconeQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -134,9 +167,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="scone" id="lemonScone" value="lemonScone">
+          <input type="checkbox" name="scone" id="lemonScone" value="lemonScone" data-price="3.50">
           <label for="lemonScone">Lemon Poppyseed Scone</label>
-          <select name="lemonScone" id="lemonScone">
+          <select name="lemonScone" id="lemonSconeQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -147,9 +180,9 @@
           <br>
           <label for="pietart">Pies and Tarts:</label>
           <br>
-          <input type="checkbox" name="pietart" id="applePie" value="applePie">
+          <input type="checkbox" name="pietart" id="applePie" value="applePie" data-price="4.00">
           <label for="applePie">Apple Pie</label>
-          <select name="applePie" id="applePie">
+          <select name="applePie" id="applePieQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -157,9 +190,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="pietart" id="cherryPie" value="cherryPie">
+          <input type="checkbox" name="pietart" id="cherryPie" value="cherryPie" data-price="4.00">
           <label for="cherryPie">Cherry Pie</label>
-          <select name="cherryPie" id="cherryPie">
+          <select name="cherryPie" id="cherryPieQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -167,9 +200,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="pietart" id="bluePie" value="bluePie">
+          <input type="checkbox" name="pietart" id="bluePie" value="bluePie" data-price="3.50">
           <label for="bluePie">Blueberry Pie</label>
-          <select name="bluePie" id="bluePie">
+          <select name="bluePie" id="bluePieQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -177,9 +210,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="pietart" id="lemonTart" value="lemonTart">
+          <input type="checkbox" name="pietart" id="lemonTart" value="lemonTart" data-price="3.50">
           <label for="lemonTart">Lemon Tart</label>
-          <select name="lemonTart" id="lemonTart">
+          <select name="lemonTart" id="lemonTartQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -187,9 +220,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="pietart" id="cocoTart" value="cocoTart">
+          <input type="checkbox" name="pietart" id="cocoTart" value="cocoTart" data-price="4.00">
           <label for="cocoTart">Chocolate Tart</label>
-          <select name="cocoTart" id="cocoTart">
+          <select name="cocoTart" id="cocoTartQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -197,9 +230,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="pietart" id="fruitTart" value="fruitTart">
+          <input type="checkbox" name="pietart" id="fruitTart" value="fruitTart" data-price="4.50">
           <label for="fruitTart">Fruit Tart</label>
-          <select name="fruitTart" id="fruitTart">
+          <select name="fruitTart" id="fruitTartQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -210,9 +243,9 @@
           <br>
           <label for="cake">Cakes:</label>
           <br>
-          <input type="checkbox" name="cake" id="cocoCake" value="cocoCake">
+          <input type="checkbox" name="cake" id="cocoCake" value="cocoCake" data-price="3.50">
           <label for="cocoCake">Chocolate Cake</label>
-          <select name="cocoCake" id="cocoCake">
+          <select name="cocoCake" id="cocoCakeQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -220,9 +253,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="cake" id="nillaCake" value="nillaCake">
+          <input type="checkbox" name="cake" id="nillaCake" value="nillaCake" data-price="3.50">
           <label for="nillaCake">Vanilla Cake</label>
-          <select name="nillaCake" id="nillaCake">
+          <select name="nillaCake" id="nillaCakeQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -230,9 +263,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="cake" id="redCake" value="redCake">
+          <input type="checkbox" name="cake" id="redCake" value="redCake" data-price="3.00">
           <label for="redCake">Red Velvet Cake</label>
-          <select name="redCake" id="redCake">
+          <select name="redCake" id="redCakeQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -240,9 +273,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="cake" id="carrotCake" value="carrotCake">
+          <input type="checkbox" name="cake" id="carrotCake" value="carrotCake" data-price="3.00">
           <label for="carrotCake">Carrot Cake</label>
-          <select name="carrotCake" id="carrotCake">
+          <select name="carrotCake" id="carrotCakeQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -253,9 +286,9 @@
           <br>
           <label for="cookie">Cookies:</label>
           <br>
-          <input type="checkbox" name="cookie" id="cocoCookie" value="cocoCookie">
+          <input type="checkbox" name="cookie" id="cocoCookie" value="cocoCookie" data-price="1.50">
           <label for="cocoCookie">Chocolate Chip Cookie</label>
-          <select name="cocoCookie" id="cocoCookie">
+          <select name="cocoCookie" id="cocoCookieQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -263,9 +296,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="cookie" id="oatmealCookie" value="oatmealCookie">
+          <input type="checkbox" name="cookie" id="oatmealCookie" value="oatmealCookie" data-price="1.50">
           <label for="oatmealCookie">Oatmeal Raisin Cookie</label>
-          <select name="oatmealCookie" id="oatmealCookie">
+          <select name="oatmealCookie" id="oatmealCookieQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -273,9 +306,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="cookie" id="peanutCookie" value="peanutCookie">
+          <input type="checkbox" name="cookie" id="peanutCookie" value="peanutCookie" data-price="1.50">
           <label for="peanutCookie">Peanut Butter Cookie</label>
-          <select name="peanutCookie" id="peanutCookie">
+          <select name="peanutCookie" id="peanutCookieQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -283,9 +316,9 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select><br>
-          <input type="checkbox" name="cookie" id="sugarCookie" value="sugarCookie">
+          <input type="checkbox" name="cookie" id="sugarCookie" value="sugarCookie" data-price="1.50">
           <label for="sugarCookie">Sugar Cookie</label>
-          <select name="sugarCookie" id="sugarCookie">
+          <select name="sugarCookie" id="sugarCookieQty">
             <option value="0">-</option>
             <option value="1">1</option>
             <option value="2">2</option>
