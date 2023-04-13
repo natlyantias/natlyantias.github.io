@@ -1,40 +1,46 @@
-// Redirect to order page when order button is clicked
-function redirectToOrder() {
-  window.location.href = "orderindex.html";
+const cart = [];
+
+function addToCart(name, price) {
+  const item = { name, price };
+  cart.push(item);
+  updateOrderSummary();
 }
 
-document.getElementById("order-button").addEventListener("click", redirectToOrder);
+function updateOrderSummary() {
+  const orderSummary = document.getElementById("order-summary");
+  let totalPrice = 0;
+  orderSummary.innerHTML = "";
+  cart.forEach(item => {
+    const itemPrice = item.price * item.quantity;
+    totalPrice += itemPrice;
+    const itemHTML = `
+      <li>
+        ${item.name}: $${item.price} x ${item.quantity} = $${itemPrice}
+      </li>
+    `;
+    orderSummary.insertAdjacentHTML("beforeend", itemHTML);
+  });
+  orderSummary.insertAdjacentHTML("beforeend", `<hr><strong>Total Price:</strong> $${totalPrice}`);
+}
 
-// Add event listeners to each menu item
-const menuItems = document.querySelectorAll('.selection input[type="checkbox"]');
+function redirectToCheckout() {
+  if (cart.length > 0) {
+    const itemsJSON = JSON.stringify(cart);
+    localStorage.setItem("cart", itemsJSON);
+    window.location.href = "checkoutindex.html";
+  } else {
+    alert("Your cart is empty! Please add items to proceed to checkout.");
+  }
+}
+
+document.getElementById("order-button").addEventListener("click", redirectToCheckout);
+
+const menuItems = document.querySelectorAll('.menu-item');
 menuItems.forEach(item => {
-  item.addEventListener('click', () => {
-    updateOrderSummary();
+  const addToCartButton = item.querySelector('.add-to-cart');
+  addToCartButton.addEventListener('click', () => {
+    const name = item.dataset.name;
+    const price = item.dataset.price;
+    addToCart(name, price);
   });
 });
-
-// Update the order summary based on selected menu items
-function updateOrderSummary() {
-  const summary = document.getElementById("order-summary");
-  let total = 0;
-  summary.innerHTML = "";
-
-  menuItems.forEach(item => {
-    if (item.checked) {
-      const label = item.nextElementSibling.innerHTML;
-      const quantity = item.nextElementSibling.nextElementSibling.value;
-      const price = item.dataset.price;
-      const subtotal = quantity * price;
-      total += subtotal;
-
-      const itemSummary = document.createElement("li");
-      itemSummary.innerHTML = `${label}: ${quantity} x $${price} = $${subtotal}`;
-      summary.appendChild(itemSummary);
-    }
-  });
-
-  // Add total to the order summary
-  const totalSummary = document.createElement("li");
-  totalSummary.innerHTML = 'Total: $${total}';
-  summary.appendChild(totalSummary);
-}
