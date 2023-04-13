@@ -9,13 +9,10 @@
     <hr>
     <form action="confirmation.html" >
 
-      
-        
-      
 <h2>Order Summary</h2>
 <ul id="order-summary">
 </ul>
-<h2 id="total">Total: $0.00</h2>
+<p id="total">Total: $0.00</p>
 
 <script src="checkout.js"></script>
       
@@ -95,7 +92,7 @@
       
 <br>
   
-      <h2>Payment Information</h2>
+      <h2>Payment Information</h2> <br>
 <label for="payment">Payment Method:</label>
 <select id="payment" name="payment" required>
   <option value="">Choose Payment Method</option>
@@ -129,7 +126,7 @@
     } else {
       cardInfoDiv.style.display = "none";
     }
-  });
+  });<br><br>
 </script>
 
   
