@@ -36,4 +36,3 @@ function updateOrderSummary() {
   orderSummaryElement.innerHTML = html;
   totalElement.textContent = `Total: $${total.toFixed(2)}`;
 }
-
