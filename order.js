@@ -1,8 +1,8 @@
 const cart = [];
-const orderSummaryElement = document.querySelector('#order-summary');
 
 function redirectToOrder() {
-  window.location.href = "orderindex.html";
+  localStorage.setItem('cart', JSON.stringify(cart));
+  window.location.href = "checkoutindex.html";
 }
 
 document.getElementById("order-button").addEventListener("click", redirectToOrder);
@@ -39,5 +39,5 @@ function updateOrderSummary() {
     totalQuantity += item.quantity;
   });
   html += `<tr><td colspan="3">Total (${totalQuantity} items): ${total.toFixed(2)}</td></tr></table>`;
-  orderSummaryElement.innerHTML = html;
+  document.querySelector('#order-summary').innerHTML = html;
 }
