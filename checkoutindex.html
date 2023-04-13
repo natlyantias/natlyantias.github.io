@@ -8,23 +8,16 @@
     <h1>Checkout</h1>
     <hr>
     <form action="confirmation.html" >
-<script src="checkout.js"></script>     
       
       
       <!-- Order summary -->
 <h2>Order Summary</h2>
-<ul>
-  <!-- Display selected items and their prices -->
-  {% for item in cart.items %}
-  <li>{{ item.product.name }} - {{ item.quantity }} x ${{ item.product.price }}</li>
-  {% endfor %}
-  
-  <!-- Display subtotal -->
-  <li>Subtotal: ${{ cart.get_subtotal }}</li>
-  
-  <!-- Display total price -->
-  <li>Total: ${{ cart.get_total }}</li>
-</ul>
+<ul id="order-list"></ul>
+      <p id="subtotal">Subtotal: $0</p>
+      <p id="total">Total: $0</p>
+    </div>
+    <form action="confirmation.html">
+      <script src="checkout.js"></script>
       
       
       
