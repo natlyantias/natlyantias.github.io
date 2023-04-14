@@ -1,7 +1,7 @@
 const cart = [];
+const orderSummaryElement = document.querySelector('#order-summary');
 
 function redirectToOrder() {
-  localStorage.setItem('cart', JSON.stringify(cart));
   window.location.href = "orderindex.html";
 }
 
@@ -39,5 +39,5 @@ function updateOrderSummary() {
     totalQuantity += item.quantity;
   });
   html += `<tr><td colspan="3">Total (${totalQuantity} items): ${total.toFixed(2)}</td></tr></table>`;
-  document.querySelector('#order-summary').innerHTML = html;
+  orderSummaryElement.innerHTML = html;
 }
