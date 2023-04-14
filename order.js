@@ -1,49 +1,43 @@
-function calculateTotalPrice() {
-  let totalPrice = 0;
-  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+const cart = [];
+const orderSummaryElement = document.querySelector('#order-summary');
 
-  cartItems.forEach((item) => {
-    totalPrice += item.price * item.quantity;
-  });
-
-  return totalPrice.toFixed(2);
+function redirectToOrder() {
+  window.location.href = "orderindex.html";
 }
 
-function addItemToCart(item) {
-  let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+document.getElementById("order-button").addEventListener("click", redirectToOrder);
 
-  // Check if item is already in cart
-  const existingItemIndex = cartItems.findIndex(
-    (cartItem) => cartItem.id === item.id
-  );
-
-  if (existingItemIndex >= 0) {
-    // Item already in cart, update quantity
-    cartItems[existingItemIndex].quantity += item.quantity;
-  } else {
-    // Item not in cart, add it
-    cartItems.push(item);
-  }
-
-  // Save cart items to local storage
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-  // Update total price
-  const totalPriceElement = document.getElementById("total-price");
-  totalPriceElement.innerHTML = calculateTotalPrice();
-}
-
-// Event listener for add to cart button
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
-addToCartButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const button = event.target;
-    const item = {
-      id: button.dataset.id,
-      name: button.dataset.name,
-      price: button.dataset.price,
-      quantity: 1,
-    };
-    addItemToCart(item);
+const menuItems = document.querySelectorAll('.menu-item');
+menuItems.forEach(item => {
+  const addToCartButton = item.querySelector('.add-to-cart');
+  addToCartButton.addEventListener('click', () => {
+    const name = item.dataset.name;
+    const price = item.dataset.price;
+    addToCart(name, price, 1);
   });
 });
+
+function addToCart(name, price, quantity) {
+  const item = { name, price, quantity };
+  const existingItemIndex = cart.findIndex(cartItem => cartItem.name === name);
+  if (existingItemIndex !== -1) {
+    cart[existingItemIndex].quantity += quantity;
+  } else {
+    item.quantity = quantity;
+    cart.push(item);
+  }
+  updateOrderSummary();
+}
+
+function updateOrderSummary() {
+  let total = 0;
+  let totalQuantity = 0;
+  let html = '<table><tr><th>Item</th><th>Quantity</th><th>Price</th></tr>';
+  cart.forEach(item => {
+    html += `<tr><td>${item.name}</td><td>${item.quantity}</td><td>${item.price}</td></tr>`;
+    total += parseFloat(item.price) * item.quantity;
+    totalQuantity += item.quantity;
+  });
+  html += `<tr><td colspan="3">Total (${totalQuantity} items): ${total.toFixed(2)}</td></tr></table>`;
+  orderSummaryElement.innerHTML = html;
+}
