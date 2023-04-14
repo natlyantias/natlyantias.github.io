@@ -2,7 +2,7 @@ const cart = [];
 
 function redirectToOrder() {
   localStorage.setItem('cart', JSON.stringify(cart));
-  window.location.href = "checkoutindex.html";
+  window.location.href = "orderindex.html";
 }
 
 document.getElementById("order-button").addEventListener("click", redirectToOrder);
