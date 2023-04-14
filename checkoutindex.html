@@ -6,14 +6,18 @@
   </head>
   <body>
     <h1>Checkout</h1>
-   <h2>Selected Items:</h2>
-  <ul id="cart-list"></ul>
-  <h2>Total:</h2>
-  <p id="total"></p>
- <div id="order-summary"></div>
+    <hr>
+    <form action="confirmation.html" >
 
-    
-    
+<h2>Order Summary</h2>
+<ul id="order-summary">
+</ul>
+<p id="total">Total: $<span id="total-amount">0.00</span></p>
+
+
+<script src="checkout.js"></script>
+      
+      
       
       <h2>Shipping Information</h2>
 <label for="first-name">First Name:</label><br>
@@ -133,23 +137,5 @@
       
     </form>
     <script src="confirmation.js"></script>
-    
-    <script src="checkout.js"></script>
-  <script>
-    const cartListElement = document.getElementById('cart-list');
-    const totalElement = document.getElementById('total');
-    const cart = [ /* Add selected items here */ ];
-    let total = 0;
-    cart.forEach(item => {
-      const listItem = document.createElement('li');
-      listItem.innerText = `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
-      cartListElement.appendChild(listItem);
-      total += parseFloat(item.price) * item.quantity;
-    });
-    totalElement.innerText = `Total: $${total.toFixed(2)}`;
-  </script>
-  
-  
-  
   </body>
 </html>
