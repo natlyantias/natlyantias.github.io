@@ -3,13 +3,81 @@
 <head>
 	<title>Review</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+    
+    
+     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+
+    <style>
+      /* CSS for sticky footer */
+      html {
+        height: 100%;
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+      header {
+        margin-bottom: 20px;
+      }
+      main {
+        flex: 1 0 auto;
+        margin: 0 20px;
+      }
+      footer {
+        flex-shrink: 0;
+        margin-top: 20px;
+cs        background-color: #f2f2f2;
+      }
+	    footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+    </style>
+    <style type="text/css">
+    h1{
+        font-family: 'Dancing Script', cursive;
+	font-size: 50px;
+    text-align: center;
+      }
+      legend{
+        font-family: 'Dancing Script', cursive;
+	font-size: 40px;
+      }
+      label{
+        font-family: 'handlee', cursive;
+	      font-size: 22px;
+          text-align: center;
+      }
+         
+    </style>
+  
+  </head>
 </head>
 <body>
 
 	<h1>Let us know how we're doing!</h1>
 
 	<form action="reviewConfirmationindex.html">
-		<fieldset>
+	
 			<legend>Write a Review</legend>
             <br>
 			<label for="name">Enter Your Name:</label>
@@ -39,13 +107,13 @@
 			</div>
 <br>
 			<label for="review">Tell us about your experience:</label><br>
-			<textarea id="review" name="review" rows="15" cols="60"></textarea>
-		</fieldset>
+			<textarea id="review" name="review" rows="15" cols="60"></textarea><br>
 		<button id="reviewConfirmation-button">Submit</button>
 	</form>
 
 	<script src="reviewConfirmation.js"></script>
+     <footer>
+        <p><b>© 2023 Bakery. All rights reserved.</b></p>
+      </footer>
 </body>
 </html>
-
-
