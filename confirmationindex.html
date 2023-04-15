@@ -5,28 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    
+    
+     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+
     <style>
-      body {
-        font-size: 16px;
+      /* CSS for sticky footer */
+      html {
+        height: 100%;
+        box-sizing: border-box;
       }
-      
-      .container {
-        text-align: center;
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+      header {
+        margin-bottom: 20px;
+      }
+      main {
+        flex: 1 0 auto;
+        margin: 0 20px;
+      }
+      footer {
+        flex-shrink: 0;
+        margin-top: 20px;
+cs        background-color: #f2f2f2;
       }
     </style>
+    <style type="text/css">
+    h1{
+        font-family: 'Dancing Script', cursive;
+	font-size: 50px;
+    text-align: center;
+      }
+      p{
+        font-family: 'handlee', cursive;
+	      font-size: 22px;
+          text-align: center;
+      }
+         
+    </style>
+  
   </head>
   <body>
     <div class="container">
       <header>
         <h1>Your Order Has Been Placed!</h1>
       </header>
-      <main>
+      <main><b>
         <p>Thank you for your purchase. We have received your order and will begin processing it shortly.</p>
-        <p>You will receive an email with your order details and estimated delivery date within the next 24 hours.</p>
-        <p>If you have any questions or concerns regarding your order, please don't hesitate to contact us.</p>
+        <p>You will receive an email with your order details and estimated time notifying you when your order will be ready.</p>
+        <p>If you have any questions or concerns regarding your order, please don't hesitate to contact us.</p></b>
       </main>
       <footer>
-        <p>© 2023 Bakery. All rights reserved.</p>
+        <p><b>© 2023 Bakery. All rights reserved.</b></p>
       </footer>
     </div>
   </body>
